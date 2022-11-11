@@ -2,16 +2,16 @@ import values
 from action.move import activity
 from grid.run import create_grid
 
-create_grid(values.grid_siz, values.my_location, values.door)
+create_grid(values.grid_siz, values.my_location, values.door, values.dragon_location)
+
+
+def update_location(x: int, y: int):
+    return values.my_location[0] + x, values.my_location[1] + y
+
 
 while True:
 
     action = input("please select actions : ")
-
-
-    def update_location(x: int, y: int):
-        return values.my_location[0] + x, values.my_location[1] + y
-
 
     if action not in values.action_list:
         print('your select not true')
