@@ -1,7 +1,7 @@
 from random import randrange
 
-left_right_val = 0
-up_down_val = 0
+left_right_val: int = 0
+up_down_val: int = 0
 
 action_list = ['left', 'right', 'up', 'down', 'end']
 

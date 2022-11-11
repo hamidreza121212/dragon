@@ -1,8 +1,8 @@
-from action.move import activity
 import values
+from action.move import activity
 from grid.run import create_grid
 
-create_grid('game', values.grid_siz, values.my_location, values.door)
+create_grid(values.grid_siz, values.my_location, values.door)
 
 while True:
 
