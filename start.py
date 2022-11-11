@@ -1,5 +1,5 @@
 from typing import Tuple
-from tests.run import create_grid
+from grid.run import create_grid
 from random import randrange
 
 left_right_val = 0
