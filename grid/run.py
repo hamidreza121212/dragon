@@ -4,8 +4,9 @@ import os
 
 def create_grid(status: str, grid: int, person_location: Tuple, door_location: Tuple):
     matrix = []
+    os.system('cls||clear')
 
-    print(status)
+    print(f"status : {status}")
 
     if status == 'game':
         for i in range(grid):
