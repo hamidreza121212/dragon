@@ -11,6 +11,6 @@ grid_rend = grid_siz - 1
 
 my_location = (randrange(0, grid_rend), randrange(0, grid_rend))
 
-dragon_location = (2, 2)
+dragon_location = (1, 1)
 
 door = (randrange(0, grid_rend), randrange(0, grid_rend))
