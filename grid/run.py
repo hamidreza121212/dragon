@@ -1,10 +1,26 @@
 from typing import Tuple
 import os
+from pyfiglet import Figlet
+from termcolor import colored
+
+
+def cls_terminal():
+    os.system('clear')
+
+
+def mega_banner(text: str, color: str):
+    cls_terminal()
+    font = Figlet(font='banner3-D')
+    print(colored(font.renderText(text), color))
 
 
 def create_grid(grid: int, person_location: Tuple, door_location: Tuple, dragon_location: Tuple):
     matrix = []
-    os.system('cls||clear')
+    cls_terminal()
+
+    print(person_location)
+    print(door_location)
+    print(dragon_location)
 
     for i in range(grid):
         a = []

@@ -1,49 +1,52 @@
 import values
-from action.move import activity
-from grid.run import create_grid
-
-create_grid(values.grid_siz, values.my_location, values.door, values.dragon_location)
+# from action.move import activity
+from grid.run import create_grid, mega_banner
 
 
-def update_location(x: int, y: int):
-    return values.my_location[0] + x, values.my_location[1] + y
+# create_grid(values.grid_siz, values.my_location, values.door, values.dragon_location)
 
 
-while True:
+# def update_location(x: int, y: int):
+#     return values.my_location[0] + x, values.my_location[1] + y
 
-    action = input("please select actions : ")
 
-    if action not in values.action_list:
-        print('your select not true')
+def game():
+    number_of_size = values.grid_size()
+    point_list = values.get_random_position(number_of_size)
 
-    if action == 'left':
-        if not values.left_right_val + values.my_location[1] == 0:
-            values.left_right_val = values.left_right_val - 1
+    while True:
 
-        activity(update_location(values.up_down_val, values.left_right_val), values.dragon_location, values.door,
-                 values.grid_siz)
+        action = input("please select actions : ")
 
-    if action == 'right':
-        if not values.left_right_val + values.my_location[1] >= values.grid_siz - 1:
-            values.left_right_val = values.left_right_val + 1
+        if action == 'left':
+            output = point_list[0][0] - 1, point_list[0][0]
 
-        activity(update_location(values.up_down_val, values.left_right_val), values.dragon_location, values.door,
-                 values.grid_siz)
+            # create_grid(number_of_size, output, point_list[1], point_list[2])
+            print(output)
 
-    if action == 'up':
-        if not values.up_down_val + values.my_location[0] <= 0:
-            values.up_down_val = values.up_down_val - 1
+        elif action == 'right':
+            output = point_list[0][0] + 1, point_list[0][0]
 
-        activity(update_location(values.up_down_val, values.left_right_val), values.dragon_location, values.door,
-                 values.grid_siz)
+            # create_grid(number_of_size, output, point_list[1], point_list[2])
+        elif action == 'u':
+            output = point_list[0][0], point_list[0][0] - 1
+            print(output)
 
-    if action == 'down':
-        if not values.up_down_val + values.my_location[0] >= values.grid_siz - 1:
-            values.up_down_val = values.up_down_val + 1
+            # create_grid(number_of_size, output, point_list[1], point_list[2])
 
-        activity(update_location(values.up_down_val, values.left_right_val), values.dragon_location, values.door,
-                 values.grid_siz)
+        elif action == 'down':
+            output = point_list[0][0], point_list[0][0] + 1
 
-    if action == 'end':
-        print('tank you for good play')
-        break
+            # create_grid(number_of_size, output, point_list[1], point_list[2])
+
+        elif action == 'end':
+            print('tank you for good play')
+            break
+
+        else:
+            print('your select not true')
+
+
+game()
+
+
