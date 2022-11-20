@@ -1,5 +1,6 @@
 from typing import Tuple
 import os
+from termcolor import colored
 
 
 def create_grid(grid: int, person_location: Tuple, door_location: Tuple, dragon_location: Tuple):
@@ -11,7 +12,7 @@ def create_grid(grid: int, person_location: Tuple, door_location: Tuple, dragon_
 
         if person_location == door_location:
             for j in range(grid):
-                a.append("+")
+                a.append(colored("+", 'green'))
             matrix.append(a)
 
         if person_location == dragon_location:
