@@ -5,14 +5,12 @@ from pyfiglet import Figlet
 from termcolor import colored
 from .messages import get_near_message
 
-
-
 def cls_terminal():
     os.system('clear')
 
 
-def get_random_position(size: int) -> List[List[int, int]]:
-    random_list: List[List[int, int]] = list()
+def get_random_position(size: int) -> List[List[int]]:
+    random_list: List[List[int]] = list()
     while len(random_list) < 3:
         rdm: List = list()
         rdm.append(randint(1, size - 1))
@@ -20,12 +18,6 @@ def get_random_position(size: int) -> List[List[int, int]]:
         if rdm not in random_list:
             random_list.append(rdm)
     return random_list
-
-
-def show_mega_banner(text: str, color: str):
-    cls_terminal()
-    font = Figlet(font='banner3-D')
-    print(colored(font.renderText(text), color))
 
 
 def get_map_size():
@@ -40,12 +32,8 @@ def get_map_size():
     return size
 
 
-def start_game(dimension):
-    pass
-
-
 def get_mode_play(dimension: int):
-    status = input("Do you want to play agine : ")
+    status = input("Do you want to play again : ")
     if status == 'play':
         cls_terminal()
         start_game(dimension)
@@ -55,7 +43,7 @@ def get_mode_play(dimension: int):
 
 def set_show_dragon(player_location: List, dragon_location: List, dragon_status: bool) -> bool:
     dragon_status = False
-    if dragon_location
+    # if dragon_location
     pass
 
 

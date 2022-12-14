@@ -3,6 +3,12 @@ from termcolor import colored
 from painless.enums import ColorEnum
 
 
+def show_mega_banner(text: str, color: str):
+    cls_terminal()
+    font = Figlet(font='banner3-D')
+    print(colored(font.renderText(text), color))
+
+
 def set_game_message(player_location: List[int, int], player_move: List[str]):  # type: ignore
     print(f"\n Your currently in location {player_location}")
     print(f"Your can move to {player_move}")

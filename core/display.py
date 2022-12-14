@@ -1,34 +1,34 @@
 import os
 from typing import List
+from typ
 from .messages import get_near_message
+from painless.enums import ColorEnum
 
 
-def draw_grid(
+def grid(
         map_dimension: int,
-        player_location: List[int, int],
-        dragon_location: List[int, int],
+        player_location: List[int],
+        dragon_location: List[int],
         dragon_status: bool) -> None:
     matrix = []
-    os.system('cls||clear')
     get_near_message(player_location, dragon_location)
 
-    for i in range(map_dimension):
-        a = []
+    for col in range(map_dimension):
+        for row in range(map_dimension):
+            if row == person_location[0] and col == person_location[1]:
+                symbol = "\u32E1"
+                color = ColorEnum.red.value
+            elif row == door_location[0] and col == door_location[1]:
+                a.append("\u2FF4")
+            else:
 
-        if person_location == door_location:
-            for j in range(grid):
-                a.append(colored("+", 'green'))
-            matrix.append(a)
 
-        if person_location == dragon_location:
-            for j in range(grid):
-                a.append("-")
-            matrix.append(a)
+
+
 
         else:
             for j in range(grid):
-                if i == person_location[0] and j == person_location[1]:
-                    a.append("\u32E1")
+
                 elif i == door_location[0] and j == door_location[1]:
                     a.append("\u2FF4")
                 else:
