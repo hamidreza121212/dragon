@@ -66,39 +66,35 @@ def run_game():
 
 def get_permissin_action(player_posation: list, map_size: int) -> list:
     allow_move_list = List() 
+
+    # match term:
+    # case pattern-1:
+    #      action-1
+    # case pattern-2:
+    #      action-2
+    # case pattern-3:
+    #      action-3
+    # case _:
+    #     action-default
+
     if player_posation[0] == 0 and player_posation[1] == 0:
-        allow_move_list.append("bottom")
-        allow_move_list.append("right")
+        allow_move_list.append("bottom", "right")
     elif player_posation[0] == 0 and player_posation[1] != (map_size - 1):
-        allow_move_list.append("bottom")
-        allow_move_list.append("right")
-        allow_move_list.append("top")
+        allow_move_list.append("right", "bottom", "top")
     elif player_posation[0] != (map_size - 1) and player_posation[1] == 0:
-        allow_move_list.append("bottom")
-        allow_move_list.append("left")
-        allow_move_list.append("right")
+        allow_move_list.append("bottom", "left", "right")
     elif player_posation[0] == (map_size - 1) and player_posation[1] == (map_size - 1):
-        allow_move_list.append("top")
-        allow_move_list.append("left")
+        allow_move_list.append("left", "top")
     elif player_posation[0] == (map_size - 1) and player_posation[1] == 0:
-        allow_move_list.append("left")
-        allow_move_list.append("bottom")
+        allow_move_list.append("left", "bottom")
     elif player_posation[0] == 0 and player_posation[1] == (map_size - 1):
-        allow_move_list.append("top")
-        allow_move_list.append("right")
+        allow_move_list.append("right", "top")
     elif player_posation[0] == (map_size - 1) and player_posation[1] != (map_size - 1):
-        allow_move_list.append("top")
-        allow_move_list.append("left")
-        allow_move_list.append("bottom")
+        allow_move_list.append("bottom", "left", "top")
     elif player_posation[0] != (map_size - 1) and player_posation[1] == (map_size - 1):
-        allow_move_list.append("top")
-        allow_move_list.append("left")
-        allow_move_list.append("right")
+        allow_move_list.append("top", "right", "top")
     else:
-        allow_move_list.append("top")
-        allow_move_list.append("left")
-        allow_move_list.append("right")
-        allow_move_list.append("bottom")
+        allow_move_list.append("top", "right", "top", "bottom")
     return allow_move_list
 
 
