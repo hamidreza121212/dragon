@@ -1,20 +1,23 @@
-from typing import Tuple
+import os
+from typing import List
+from .messages import get_near_message
 
 
-def create_grid(grid: int, person_location: Tuple, door_location: Tuple, dragon_location: Tuple):
+def draw_grid(
+        map_dimension: int,
+        player_location: List[int, int],
+        dragon_location: List[int, int],
+        dragon_status: bool) -> None:
     matrix = []
-    cls_terminal()
+    os.system('cls||clear')
+    get_near_message(player_location, dragon_location)
 
-    print(person_location)
-    print(door_location)
-    print(dragon_location)
-
-    for i in range(grid):
+    for i in range(map_dimension):
         a = []
 
         if person_location == door_location:
             for j in range(grid):
-                a.append("+")
+                a.append(colored("+", 'green'))
             matrix.append(a)
 
         if person_location == dragon_location:
