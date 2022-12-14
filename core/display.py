@@ -4,22 +4,24 @@ from painless.enums import ColorEnum
 from termcolor import colored
 
 
-def grid(
+def draw_grid(
         map_dimension: int,
         player_location: List[int],
         dragon_location: List[int],
         dragon_status: bool) -> None:
+
     get_near_message(player_location, dragon_location)
 
     for col in range(map_dimension):
         for row in range(map_dimension):
             if row == player_location[0] and col == player_location[1]:
-                symbol = "\u32E1"
+                symbol = "P"
                 color = ColorEnum.green.value
             elif row == dragon_location[0] and col == dragon_location[1] and dragon_status:
-                symbol = "\u2FF4"
+                symbol = "D"
                 color = ColorEnum.red.value
             else:
-                symbol = "\u4DC0"
+                symbol = "*"
                 color = ColorEnum.white.value
-            print(colored("%%-%ds" % 2 % symbol, color))
+            print(colored("%%-%ds" % 2 % symbol, color), end="")
+        print()

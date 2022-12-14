@@ -3,6 +3,14 @@ from enum import Enum
 from dataclasses import dataclass
 from typing import NamedTuple
 
+list_exit_order: list = ["Q", "EXIT", "END", "QUIT"]
+
+class ExistOrderEnum(Enum):
+    Q = 'Q'
+    EXIT = 'EXIT'
+    END = 'END'
+    QUIT = 'QUIT'
+
 
 class MapDimensionEnum(Enum):
     x: int
