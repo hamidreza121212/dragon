@@ -1,15 +1,17 @@
+import os
 from typing import List
 from termcolor import colored
 from painless.enums import ColorEnum
+from pyfiglet import Figlet
 
 
 def show_mega_banner(text: str, color: str):
-    cls_terminal()
+    os.system('clear')
     font = Figlet(font='banner3-D')
     print(colored(font.renderText(text), color))
 
 
-def set_game_message(player_location: List[int, int], player_move: List[str]):  # type: ignore
+def set_game_message(player_location: List[int], player_move: List[str]):  # type: ignore
     print(f"\n Your currently in location {player_location}")
     print(f"Your can move to {player_move}")
     print("Enter ['END' OR 'Q'] to quit")
