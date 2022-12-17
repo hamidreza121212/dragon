@@ -1,14 +1,10 @@
 import os
 from painless.game_rnmd import get_random_position
 from typing import List
-from painless.messages import (
-    show_mega_banner,
-    test_rol_message,
-    play_rol_message,
-    god_bay, get_near_message,
-    get_error)
+from painless.messages import *
 from painless.enums import ColorEnum, list_exit_order
 from .display import draw_grid  
+from painless.move_set import *
 
 
 def get_map_size():
@@ -132,29 +128,6 @@ def run_game():
     get_mode_play(get_map_size())
 
 
-def get_permissin_action(player_posation: list, map_size: int) -> list:
-    allow_move_list = list() 
-    if player_posation[0] == 0 and player_posation[1] == 0:
-        allow_move_list.append(["bottom", "right"])
-    elif player_posation[0] == 0 and player_posation[1] != (map_size - 1):
-        allow_move_list.append(["right", "bottom", "top"])
-    elif player_posation[0] != (map_size - 1) and player_posation[1] == 0:
-        allow_move_list.append(["bottom", "left", "right"])
-    elif player_posation[0] == (map_size - 1) and player_posation[1] == (map_size - 1):
-        allow_move_list.append(["left", "top"])
-    elif player_posation[0] == (map_size - 1) and player_posation[1] == 0:
-        allow_move_list.append(["left", "bottom"])
-    elif player_posation[0] == 0 and player_posation[1] == (map_size - 1):
-        allow_move_list.append(["right", "top"])
-    elif player_posation[0] == (map_size - 1) and player_posation[1] != (map_size - 1):
-        allow_move_list.append(["bottom", "left", "top"])
-    elif player_posation[0] != (map_size - 1) and player_posation[1] == (map_size - 1):
-        allow_move_list.append(["top", "right", "top"])
-    else:
-        allow_move_list.append(["top", "right", "top", "bottom"])
-    return allow_move_list
-
-
 def start_game(map_dimension: int, mode_status_check: bool):
     position_list = get_random_position(map_dimension)
     play_status = True
@@ -163,25 +136,24 @@ def start_game(map_dimension: int, mode_status_check: bool):
     while play_status:
         dragon_status = set_show_dragon(position_list[0], position_list[1], dragon_status)
         draw_grid(map_dimension, position_list[0], position_list[1], dragon_status)
-        allow_moves_list = get_permissin_action(position_list[0], map_dimension)
 
         if mode_status_check == 'test':
-            test_rol_message(position_list[0], position_list[1], position_list[2], allow_moves_list)
+            test_rol_message(position_list[0], position_list[1], position_list[2])
         elif mode_status_check == 'play':
-            play_rol_message(position_list[0], allow_moves_list)
+            play_rol_message(position_list[0])
         else:
             pass
 
         move_order = input("> ")
 
-        if move_order in allow_moves_list or list_exit_order:
-            if move_order == 'right':
+        if move_order or list_exit_order:
+            if move_order == 'right' and permissin_right(position_list[0], map_dimension):
                 out = [position_list[0][0] + 1, position_list[0][1]]
-            elif move_order == 'left':
+            elif move_order == 'left' and permissin_left(position_list[0]):
                 out = [position_list[0][0] - 1, position_list[0][1]]
-            elif move_order == 'top':
+            elif move_order == 'top' and permissin_top(position_list[0]):
                 out = [position_list[0][0], position_list[0][1] - 1]
-            elif move_order == 'bottom':
+            elif move_order == 'bottom' and permissin_bottom(position_list[0], map_dimension):
                 out = [position_list[0][0], position_list[0][1] + 1]
             elif move_order in list_exit_order:
                 play_status = False

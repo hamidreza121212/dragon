@@ -5,17 +5,15 @@ from painless.enums import ColorEnum
 from pyfiglet import Figlet
 
 
-def test_rol_message(person_location: list, dragon_location: list, door_location: list, allow_moves: list):
+def test_rol_message(person_location: list, dragon_location: list, door_location: list):
     print(f"\n-> You're currently in location {person_location}.")
     print(f"-> Dragon in location {dragon_location}.")
     print(f"-> Door in location {door_location}.")
-    print(f"-> You can move {allow_moves}.")
     print("-> Enter['QUIT','EXIT','END','Q'] to quit.")
 
 
-def play_rol_message(person_location: list, allow_moves: list):
+def play_rol_message(person_location: list):
     print(f"\n-> You're currently in location {person_location}.")
-    print(f"-> You can move {allow_moves}.")
     print("-> Enter['QUIT','EXIT','END','Q'] to quit.")
 
 
