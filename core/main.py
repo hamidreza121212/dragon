@@ -20,7 +20,7 @@ def get_map_size():
 
 
 def set_show_dragon(player_location: List, dragon_location: List, dragon_status: bool) -> bool:
-    dragon_status = False
+    dragon_status = False 
     if dragon_location:
         dragon_status = True
     else:
@@ -29,45 +29,6 @@ def set_show_dragon(player_location: List, dragon_location: List, dragon_status:
         else:
             dragon_status = False
     return dragon_status
-
-
-def start_play(map_dimension: int, status: bool):
-    position_list = get_random_position(map_dimension)
-    play_status = True
-    dragon_status = False
-
-    while play_status:
-        dragon_status = set_show_dragon(position_list[0], position_list[1], dragon_status)
-        draw_grid(map_dimension, position_list[0], position_list[1], dragon_status)
-        possible_moves = get_permissin_action(position_list[0], map_dimension)
-        if status:
-            test_rol_message(position_list[0], position_list[1],
-                           position_list[2], possible_moves)
-        else:
-            play_rol_message(position_list[0], possible_moves)
-        move_order = input("> ")
-        if move_order in possible_moves or move_order in list_exit_order:
-            if move_order == 'right':
-                out = [position_list[0][0] + 1, position_list[0][1]]
-            elif move_order == 'left':
-                out = [position_list[0][0] - 1, position_list[0][1]]
-            elif move_order == 'top':
-                out = [position_list[0][0], position_list[0][1] - 1]
-            elif move_order == 'bottom':
-                out = [position_list[0][0], position_list[0][1] + 1]
-            elif move_order in list_exit_order:
-                play_status = False
-                god_bay()
-                break
-        else:
-            get_error()
-            out = [position_list[0][0], position_list[0][1]]
-        position_list[0] = out
-        victoryStatus = get_continue_status(get_victory_status(position_list))
-        if victoryStatus:
-            os.system('clear')
-        else:
-            break
 
 
 def get_victory_status(position_list: list) -> int:
@@ -103,7 +64,7 @@ def get_continue_status(victory_status: int) -> bool:
             run_game()
         elif repeat_request == "No":
             continue_status = False
-            god_bay()
+            god_bay_message()
         else:
             get_error()
     return continue_status
@@ -147,17 +108,17 @@ def start_game(map_dimension: int, mode_status_check: bool):
         move_order = input("> ")
 
         if move_order or list_exit_order:
-            if move_order == 'right' and permissin_right(position_list[0], map_dimension):
+            if move_order == 'r' and permissin_right(position_list[0], map_dimension):
                 out = [position_list[0][0] + 1, position_list[0][1]]
-            elif move_order == 'left' and permissin_left(position_list[0]):
+            elif move_order == 'l' and permissin_left(position_list[0]):
                 out = [position_list[0][0] - 1, position_list[0][1]]
-            elif move_order == 'top' and permissin_top(position_list[0]):
+            elif move_order == 't' and permissin_top(position_list[0]):
                 out = [position_list[0][0], position_list[0][1] - 1]
-            elif move_order == 'bottom' and permissin_bottom(position_list[0], map_dimension):
+            elif move_order == 'b' and permissin_bottom(position_list[0], map_dimension):
                 out = [position_list[0][0], position_list[0][1] + 1]
             elif move_order in list_exit_order:
                 play_status = False
-                god_bay()
+                god_bay_message()
                 break
         else:
             get_error()

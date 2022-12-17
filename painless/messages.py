@@ -24,27 +24,23 @@ def show_mega_banner(text: str, color: str):
     print(colored(font.renderText(text), color))
 
 
-def set_game_message(player_location: List[int], player_move: List[str]):  # type: ignore
-    print(f"\n Your currently in location {player_location}")
-    print(f"Your can move to {player_move}")
-    print("Enter ['END' OR 'Q'] to quit")
 
+def get_near_message(player_location: List, dragon_location: List):
 
-def get_near_message(player_location: List, dragon_list: List):
-    near_message = "\n \n \n"
-
-    if (player_location[0] - dragon_list[0] <= 2) and (player_location[1] - dragon_list[1] <= 2):
-        near_message = "\t ** Be Careful ** \n \t ** Dragon is near you **"
+    dis = 0
+    for i in range(len(player_location)):
+        dis += abs(player_location[i] - dragon_location[i])
+    
+    near_message = "\t ** Be Careful ** \n \t ** Dragon is near you **" if dis <= 3 else "\n"
 
     print(colored(near_message, str(ColorEnum.yellow.value)))
 
 
-def god_bay():
+def god_bay_message():
     print(colored('\t\t **Bay** \n\t **Have a Nice Day**', str(ColorEnum.green.value)))
 
 
 def get_error():
     print(colored('\t Invalid input Please enter the correct input : \n', str(ColorEnum.red.value)))
     input(' To Continue please press enter ...')
-
 
