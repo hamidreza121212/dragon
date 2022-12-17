@@ -13,7 +13,7 @@ def test_rol_message(person_location: list, dragon_location: list, door_location
     print("-> Enter['QUIT','EXIT','END','Q'] to quit.")
 
 
-def play_message(person_location: list, allow_moves: list):
+def play_rol_message(person_location: list, allow_moves: list):
     print(f"\n-> You're currently in location {person_location}.")
     print(f"-> You can move {allow_moves}.")
     print("-> Enter['QUIT','EXIT','END','Q'] to quit.")
@@ -32,10 +32,10 @@ def set_game_message(player_location: List[int], player_move: List[str]):  # typ
     print("Enter ['END' OR 'Q'] to quit")
 
 
-def get_near_message(player_list: List, dragon_list: List):
+def get_near_message(player_location: List, dragon_list: List):
     near_message = "\n \n \n"
 
-    if (player_list[0] - dragon_list[0] <= 2) and (player_list[1] - dragon_list[1] <= 2):
+    if (player_location[0] - dragon_list[0] <= 2) and (player_location[1] - dragon_list[1] <= 2):
         near_message = "\t ** Be Careful ** \n \t ** Dragon is near you **"
 
     print(colored(near_message, str(ColorEnum.yellow.value)))
