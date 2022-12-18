@@ -1,7 +1,11 @@
-from database import alchemy_db as db
+from database.models import User
 
-db.engine.connect()
-print(db.engine.connect())
+
+# User.create('hamidreza121212', '1234')
+
+user = User.read('hamidreza121212')
+print(user[0].username)
+
 
 # from core import run_game
 
