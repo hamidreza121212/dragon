@@ -1,17 +1,16 @@
-from sqlalchemy import create_engine
+from database import alchemy_db as db
 
-engin = create_engine("sqlite:///dragon_sqlite3.db", echo=True)
+db.engine.connect()
+print(db.engine.connect())
 
-engin.connect()
-
-from core import run_game
-
-
-def main():
-    run_game()
+# from core import run_game
 
 
-if __name__ == '__main__':
-    main()
+# def main():
+#     run_game()
+
+
+# if __name__ == '__main__':
+#     main()
 
 

@@ -2,6 +2,16 @@
 from enum import Enum
 from dataclasses import dataclass
 from typing import NamedTuple
+from decouple import config
+
+
+class DatabaseConfig(Enum):
+    Dialect = config('DB_DIALECT')
+    Username = config('DB_USERNAME')
+    Password = config('DB_PASSWORD')
+    Host = config('DB_HOST')
+    Port = config('DB_PORT')
+    Database = config('DB_NAME')
 
 list_exit_order: list = ["Q", "EXIT", "END", "QUIT"]
 
