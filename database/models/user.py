@@ -77,7 +77,7 @@ class UserModel(db.Base):
 
     @classmethod
     def login(cls, username, password):
-        stmt = sql.select(cls).where(cls.username == username and cls.password == password)
+        stmt = sql.select(cls).where(cls.username == username, cls.password == password)
         user = db.session.execute(stmt).one_or_none()
 
         print(user)
