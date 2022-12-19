@@ -32,12 +32,22 @@ class UserModel(db.Base):
     
     @classmethod
     def create(cls, username, password):
-        stmt = sql.insert(cls).values(
+        assert isinstance(username, str), 'username must be a string'
+        assert username[0].isdigit(), 'username must start with a character'
+
+        if username[0].isdigit():
+            print('username must start with a character')
+
+        elif isinstance(username, str):
+            print('username must be a string')
+
+        else:
+            stmt = sql.insert(cls).values(
             username = username, 
             password = password
             )
-        db.session.execute(stmt)
-        db.session.commit()
+            db.session.execute(stmt)
+            db.session.commit()
 
     @classmethod
     def update(cls, old_username, new_username):
@@ -46,17 +56,32 @@ class UserModel(db.Base):
             )
         db.session.execute(stmt)
         db.session.commit()
-
     
     @classmethod
     def read(cls, username):
         stmt = sql.select(cls).where(cls.username == username)
         user = db.session.execute(stmt).one_or_none()
         return user
-
     
     @classmethod
     def delete(cls, username):
         stmt = sql.delete(cls).where(cls.username == username)
         db.session.execute(stmt)
         db.session.commit()
+
+    def __repr__(self) -> str:
+        return f"<User : {self.username}>"
+
+    def register():
+        pass
+
+    @classmethod
+    def login(cls, username, password):
+        stmt = sql.select(cls).where(cls.username == username and cls.password == password)
+        user = db.session.execute(stmt).one_or_none()
+
+        print(user)
+
+        return True if user is not None else False
+        
+    
