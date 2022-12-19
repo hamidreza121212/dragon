@@ -1,4 +1,5 @@
 from database import alchemy_db as db
+import re
 from sqlalchemy import sql
 from sqlalchemy import (
     Column,
@@ -32,14 +33,17 @@ class UserModel(db.Base):
     
     @classmethod
     def create(cls, username, password):
-        assert isinstance(username, str), 'username must be a string'
-        assert username[0].isdigit(), 'username must start with a character'
+        password_pattern = "^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$"
+        result = re.findall(password_pattern, password)
 
         if username[0].isdigit():
             print('username must start with a character')
 
         elif isinstance(username, str):
             print('username must be a string')
+        
+        elif len(password) > 8:
+            print('password must at list 8 character')
 
         else:
             stmt = sql.insert(cls).values(
