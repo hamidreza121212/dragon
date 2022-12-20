@@ -33,14 +33,11 @@ class UserModel(db.Base):
     
     @classmethod
     def create(cls, username, password):
-        password_pattern = "^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$"
-        result = re.findall(password_pattern, password)
+        # password_pattern = "^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$"
+        # result = re.findall(password_pattern, password)
 
         if username[0].isdigit():
             print('username must start with a character')
-
-        elif isinstance(username, str):
-            print('username must be a string')
         
         elif len(password) > 8:
             print('password must at list 8 character')
