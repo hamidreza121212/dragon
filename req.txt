@@ -5,6 +5,7 @@ greenlet==2.0.1
 Mako==1.2.4
 MarkupSafe==2.1.1
 platformdirs==2.6.0
+psycopg2==2.9.5
 pyfiglet==0.8.post1
 python-decouple==3.6
 SQLAlchemy==1.4.45
