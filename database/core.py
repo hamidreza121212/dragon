@@ -10,9 +10,14 @@ class SQLAlchemy:
         self.session = self.create_session()
 
     def create_engine(self):
-        engine = create_engine("{}:///{}".format(
+
+        engine = create_engine("{}://{}:{}@{}:{}/{}".format(
             DatabaseConfig.Dialect.value,
-            DatabaseConfig.Database.value
+            DatabaseConfig.Username.value,
+            DatabaseConfig.Password.value,
+            DatabaseConfig.Host.value,
+            DatabaseConfig.Port.value,
+            DatabaseConfig.Database.value,
         ), echo=False)
         return engine
 

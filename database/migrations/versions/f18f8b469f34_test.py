@@ -1,8 +1,8 @@
-"""add nullable in to username and password
+"""test
 
-Revision ID: 0cc16030c4da
+Revision ID: f18f8b469f34
 Revises: 
-Create Date: 2022-12-18 16:52:12.669589
+Create Date: 2022-12-20 13:32:30.468981
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '0cc16030c4da'
+revision = 'f18f8b469f34'
 down_revision = None
 branch_labels = None
 depends_on = None

@@ -52,7 +52,7 @@ def get_continue_status(victory_status: int) -> bool:
                 break
             elif repeat_request == "No":
                 continue_status = False
-                get_near_message()
+                god_bay_message()
                 break
             else:
                 get_error()
